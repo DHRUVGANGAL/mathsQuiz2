@@ -83,7 +83,7 @@ const checkAnswer = (event) => {
   if (userAnswer === storedAnswer) {
     score += 1;
     Toastify({
-      text: `Your are wrong and your score is ${score}`,
+      text: `You are right and your score is ${score}`,
       gravity: "bottom",
       position: "center",
       style: {
@@ -93,7 +93,7 @@ const checkAnswer = (event) => {
   } else {
     score -= 1;
     Toastify({
-      text: `Your are wrong and your score is ${score}`,
+      text: `You are wrong and your score is ${score}`,
       gravity: "bottom",
       position: "center",
       style: {
@@ -101,9 +101,16 @@ const checkAnswer = (event) => {
       },
     }).showToast();
   }
+  
+
   scoreEl.innerText = score;
   localStorage.setItem("score", score);
   event.target.reset();
   showQuestion();
   console.log("answer", userAnswer);
 };
+function reset(){
+  localStorage.setItem("score", 0);
+  score = 0;
+  scoreEl.innerText = score;
+}
